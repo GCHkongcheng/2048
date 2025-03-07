@@ -1,76 +1,19 @@
-html,
 body {
-  overflow: hidden;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  background-color: #bbada0;
-  color: #776e65;
-  font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
-  font-size: 18px;
-}
-
-.game-container {
-  width: 90%;
-  height: 90%;
-  margin: auto;
-  position: relative;
-  background: #bbada0;
-  border-radius: 6px;
-  padding: 15px;
-}
-
-.grid-container {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  gap: 5px; /* 调整间隙大小 */
-}
-
-.grid-cell {
-  background: #cdc1b4;
-  border-radius: 3px;
+  font-family: "Arial", sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 24px;
-  font-weight: bold;
-  color: #776e65;
-  aspect-ratio: 1 / 1; /* 确保正方形比例 */
-  width: 100%; /* 宽度占满父容器 */
-  height: auto; /* 高度自动调整 */
-  margin-bottom: 5px;
+  height: 100vh;
+  margin: 0;
+  background: #faf8ef;
+  overflow: hidden; /* 禁止页面滚动 */
 }
 
-.game-message {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(238, 228, 218, 0.85);
-  z-index: 100;
-  text-align: center;
-  vertical-align: middle;
-}
-
-.restart-button {
-  display: inline-block;
-  background: #8f7a66;
-  border-radius: 3px;
-  padding: 0 20px;
-  text-decoration: none;
-  color: #f9f6f2;
-  height: 40px;
-  line-height: 40px;
-  margin-top: 55px;
-  cursor: pointer;
+.game-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 0 10px; /* 默认左右内边距 */
 }
 
 .header {
@@ -98,4 +41,116 @@ body {
   color: #f9f6f2;
   font-size: 24px;
   font-weight: bold;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 10px;
+  background: #bbada0;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.grid-cell {
+  background: #cdc1b4;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #776e65;
+  aspect-ratio: 1 / 1; /* 确保正方形比例 */
+  width: 100%; /* 宽度占满父容器 */
+  height: auto; /* 高度自动调整 */
+}
+
+.tile-2 {
+  background: #eee4da;
+}
+
+.tile-4 {
+  background: #ede0c8;
+}
+
+.tile-8 {
+  background: #f2b179;
+  color: #f9f6f2;
+}
+
+.tile-16 {
+  background: #f59563;
+  color: #f9f6f2;
+}
+
+.tile-32 {
+  background: #f67c5f;
+  color: #f9f6f2;
+}
+
+.tile-64 {
+  background: #f65e3b;
+  color: #f9f6f2;
+}
+
+.tile-128 {
+  background: #edcf72;
+  color: #f9f6f2;
+}
+
+.tile-256 {
+  background: #edcc61;
+  color: #f9f6f2;
+}
+
+.tile-512 {
+  background: #edc850;
+  color: #f9f6f2;
+}
+
+.tile-1024 {
+  background: #edc53f;
+  color: #f9f6f2;
+}
+
+.tile-2048 {
+  background: #edc22e;
+  color: #f9f6f2;
+}
+
+.game-message {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.game-message p {
+  margin: 0;
+  font-size: 24px;
+}
+
+.restart-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: #8f7a66;
+  color: #f9f6f2;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* 为小屏幕设备添加左右内边距 */
+@media (max-width: 600px) {
+  .game-container {
+    padding: 0 20px; /* 增加左右内边距 */
+  }
 }
