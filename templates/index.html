@@ -1,20 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2048 Game</title>
+    <title>2048</title>
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='styles.css') }}"
     />
   </head>
   <body>
+    <div id="overlay"></div>
+    <div id="hidden-content">
+      <h1>排行榜</h1>
+      <div id="leaderboard"></div>
+      <button id="close-button">关闭</button>
+    </div>
     <div class="game-container">
       <div class="header">
         <h1>2048</h1>
         <div class="score-container">
-          <div class="score">Score: <span id="score">0</span></div>
+          <div class="score">分数: <span id="score">0</span></div>
+          <div class="time">用时: <span id="time">00:00</span></div>
         </div>
       </div>
       <div class="game-message">
@@ -39,6 +46,17 @@
         <div class="grid-cell"></div>
         <div class="grid-cell"></div>
       </div>
+      <button class="undo-button">撤回</button>
+      <button class="reset-button">重置</button>
+      <div class="ranking-section">
+        <button class="ranking" id="show-button">排行榜</button>
+        <div class="preview-container">
+          <h3>排行榜预览</h3>
+          <div id="preview-leaderboard"></div>
+        </div>
+      </div>
+      <button class="upload-button" id="upload-button">上传至云</button>
+      <div id="nickname" onclick="editNickname()"><b>点击编辑昵称</b></div>
     </div>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
   </body>
