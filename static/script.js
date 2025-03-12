@@ -331,6 +331,12 @@ nicknameDiv.addEventListener("click", () => {
   const oldNickname = nicknameDiv.textContent;
   const newNickname = prompt("请输入新昵称：", oldNickname);
   if (newNickname) {
+    // 限制昵称长度为6个字
+    const max_length = 6;
+    if (newNickname.length > max_length) {
+      alert(`昵称长度不能超过${max_length}个字！`);
+      return;
+    }
     fetch("/save_username", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -377,6 +383,26 @@ function loadPreviewLeaderboard() {
       });
       html += "</ul>";
       document.getElementById("preview-leaderboard").innerHTML = html;
+    });
+}
+
+function showLeaderboard() {
+  fetch("/get_leaderboard")
+    .then((response) => response.json())
+    .then((data) => {
+      leaderboardDiv.innerHTML =
+        "<ul>" +
+        data
+          .map(
+            (entry) =>
+              `<li>${entry.name}: ${entry.score} 分, ${Math.floor(
+                entry.time / 60000
+              )} 分 ${Math.floor((entry.time % 60000) / 1000)} 秒</li>`
+          )
+          .join("") +
+        "</ul>";
+      hiddenContent.style.display = "block";
+      overlay.style.display = "block";
     });
 }
 
